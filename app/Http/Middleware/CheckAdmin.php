@@ -15,12 +15,13 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        $user = auth()->user;
+        $user = auth()->user();
+        
         if($user->isAdmin()) {
             return $next($request);
         }
         return response()->json([
-            'message' => "You don't have authorize to access"
+            'message' => "You don't have authorize to access this",
         ]);
     }
 }

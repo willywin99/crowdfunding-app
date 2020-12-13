@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable, UsesUuid;
 
-    public function getRoleId()
+    public function get_user_role_id()
     {
         # code...
         $role = \App\Role::where('name', 'user')->first();
@@ -22,8 +22,9 @@ class User extends Authenticatable
     {
         # code...
         parent::boot();
+
         static::creating(function($model) {
-            $model->role_id = $model->getRoleId();
+            $model->role_id = $model->get_user_role_id();
         });
     }
 
@@ -59,7 +60,7 @@ class User extends Authenticatable
     public function isAdmin()
     {
         # code...
-        if($this->role_id === $this->getRoleId()) {
+        if($this->role_id === $this->get_user_role_id()) {
             return false;
         }
         return true;

@@ -18,12 +18,12 @@ class VerifyEmail
     public function handle($request, Closure $next)
     {
         $user = auth()->user();
-        dd($user);
+        // dd($user);
         if($user->email_verified_at != null) {
             return $next($request);
         }
         return response()->json([
-            'message' => "Your account hasn't been verified"
+            'message' => "Your account hasn't been verified",
         ]);
     }
 }

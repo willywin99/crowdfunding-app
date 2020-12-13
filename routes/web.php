@@ -19,12 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/route-1', function() {
-    return view('welcome');
-})->middleware(VerifyEmail::class);
+    return 'masuk route-1';
+})->middleware(['auth', 'email_verified']);
 
 Route::get('/route-2', function() {
-    return view('welcome');
-})->middleware(CheckAdmin::class);
+    return 'masuk route-2';
+})->middleware(['auth', 'email_verified', 'admin']);
 
 Auth::routes();
 
