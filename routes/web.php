@@ -11,21 +11,21 @@
 |
 */
 
-use App\Http\Middleware\CheckAdmin;
-use App\Http\Middleware\VerifyEmail;
+// use App\Http\Middleware\CheckAdmin;
+// use App\Http\Middleware\VerifyEmail;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/route-1', function() {
-    return 'masuk route-1';
-})->middleware(['auth', 'email_verified']);
+// Route::get('/route-1', function() {
+//     return 'masuk route-1';
+// })->middleware(['auth', 'email_verified']);
 
-Route::get('/route-2', function() {
-    return 'masuk route-2';
-})->middleware(['auth', 'email_verified', 'admin']);
+// Route::get('/route-2', function() {
+//     return 'masuk route-2';
+// })->middleware(['auth', 'email_verified', 'admin']);
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

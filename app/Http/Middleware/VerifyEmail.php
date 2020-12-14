@@ -19,7 +19,7 @@ class VerifyEmail
     {
         $user = auth()->user();
         // dd($user);
-        if($user->email_verified_at != null) {
+        if($user->password != null && $user->email_verified_at != null) {
             return $next($request);
         }
         return response()->json([
