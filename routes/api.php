@@ -24,4 +24,5 @@ Route::group([
 ], function(){
     Route::post('register', 'RegisterController');
     Route::post('regenerate-otp', 'RegenerateOtpCodeController');
+    Route::post('verification', 'VerificationController');
 });
