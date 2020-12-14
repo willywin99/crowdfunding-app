@@ -25,4 +25,5 @@ Route::group([
     Route::post('register', 'RegisterController');
     Route::post('regenerate-otp', 'RegenerateOtpCodeController');
     Route::post('verification', 'VerificationController');
+    Route::post('update-password', 'UpdatePasswordController');
 });
