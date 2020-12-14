@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\UsesUuid;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -25,6 +26,10 @@ class User extends Authenticatable
 
         static::creating(function($model) {
             $model->role_id = $model->get_user_role_id();
+        });
+
+        static::created(function($model) {
+            $model->generate_otp_code();
         });
     }
 
@@ -64,5 +69,22 @@ class User extends Authenticatable
             return false;
         }
         return true;
+    }
+
+    public function generate_otp_code()
+    {
+        # code...
+        do {
+            $random = mt_rand(100000, 999999);
+            $check = OtpCode::where('otp', $random)->first();
+        } while($check);
+
+        $now = Carbon::now();
+
+        // create otp code
+        $otp_code = OtpCode::updateOrCreate(
+            ['user_id' => $this->id],
+            ['otp' => $random, 'valid_until' => $now->addMinutes(5)]
+        );
     }
 }

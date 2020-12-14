@@ -23,4 +23,5 @@ Route::group([
     'namespace' => 'Auth'
 ], function(){
     Route::post('register', 'RegisterController');
+    Route::post('regenerate-otp', 'RegenerateOtpCodeController');
 });
