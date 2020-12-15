@@ -7,8 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\UsesUuid;
 use Carbon\Carbon;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, UsesUuid;
 
@@ -86,5 +87,15 @@ class User extends Authenticatable
             ['user_id' => $this->id],
             ['otp' => $random, 'valid_until' => $now->addMinutes(5)]
         );
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
