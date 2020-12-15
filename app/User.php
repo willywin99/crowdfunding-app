@@ -13,12 +13,16 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable, UsesUuid;
 
-    public function get_user_role_id()
-    {
-        # code...
-        $role = \App\Role::where('name', 'user')->first();
-        return $role->id;
-    }
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password', 'photo_profile'
+    ];
+
+    // protected $guarded = [];
 
     public static function boot()
     {
@@ -34,16 +38,12 @@ class User extends Authenticatable implements JWTSubject
         });
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
-
-    // protected $guarded = [];
+    public function get_user_role_id()
+    {
+        # code...
+        $role = \App\Role::where('name', 'user')->first();
+        return $role->id;
+    }
 
     /**
      * The attributes that should be hidden for arrays.
