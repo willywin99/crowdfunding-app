@@ -31,6 +31,13 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', function(){
-    return view('app');
-});
+// Route::get('/{any?}', function(){
+//     return 'masuk';
+// })->where('any', '.*');
+
+// Route::get('/{any?}', function(){
+//     return 'masuk ke sini';
+// });
+
+
+Route::view('/{any?}', 'app')->where('any', '.*');
