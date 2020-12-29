@@ -22,7 +22,11 @@ class CampaignsTableSeeder extends Seeder
             Campaign::insert([
                 'id' => Str::uuid(),
                 'title' => $faker->company,
-                'description' => $faker->text($maxNbChars = 191)
+                'description' => $faker->text($maxNbChars = 191),
+                'image' => $faker->imageUrl($width = 600, $height = 400, 'cats', true, 'Faker', true),
+                'address' => $faker->address,
+                'required' => $faker->numberBetween($min = 5000000, $max = 1000000000),
+                'collected' => $faker->numberBetween($min = 0, $max = 1000000000)
             ]);
         }
 

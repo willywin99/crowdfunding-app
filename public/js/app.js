@@ -63706,6 +63706,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Campaigns.vue */ "./resources/js/views/Campaigns.vue"));
     }
   }, {
+    path: '/campaign/:id',
+    name: 'campaign',
+    component: function component() {
+      return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Campaign.vue */ "./resources/js/views/Campaign.vue"));
+    }
+  }, {
     path: '*',
     redirect: '/'
   }]
