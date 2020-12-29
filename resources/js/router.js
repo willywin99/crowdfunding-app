@@ -16,14 +16,17 @@ const router = new Router({
         {
             path: '/donations',
             name: 'donations',
-            alias: '/home',
             component: () => import( /* webpackChunkName: "categories" */ './views/Donations.vue')
         },
         {
             path: '/blogs',
             name: 'blogs',
-            alias: '/home',
             component: () => import( /* webpackChunkName: "categories" */ './views/Blogs.vue')
+        },
+        {
+            path: '/campaigns',
+            name: 'campaigns',
+            component: () => import( /* webpackChunkName: "categories" */ './views/Campaigns.vue')
         },
         {
             path: '*',

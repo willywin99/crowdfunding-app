@@ -63613,16 +63613,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/donations',
     name: 'donations',
-    alias: '/home',
     component: function component() {
       return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Donations.vue */ "./resources/js/views/Donations.vue"));
     }
   }, {
     path: '/blogs',
     name: 'blogs',
-    alias: '/home',
     component: function component() {
       return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Blogs.vue */ "./resources/js/views/Blogs.vue"));
+    }
+  }, {
+    path: '/campaigns',
+    name: 'campaigns',
+    component: function component() {
+      return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Campaigns.vue */ "./resources/js/views/Campaigns.vue"));
     }
   }, {
     path: '*',
