@@ -3437,7 +3437,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-btn",
-                { attrs: { icon: "" }, on: { click: _vm.$vuex.handleClick } },
+                { attrs: { icon: "" } },
                 [
                   _c(
                     "v-badge",
@@ -3451,7 +3451,7 @@ var render = function() {
                               return [
                                 _c("span", [
                                   _vm._v(
-                                    " " + _vm._s(this.$vuex.state.count) + " "
+                                    " " + _vm._s(_vm.$store.state.count) + " "
                                   )
                                 ])
                               ]
@@ -3461,7 +3461,7 @@ var render = function() {
                         ],
                         null,
                         false,
-                        2577934600
+                        2256568481
                       )
                     },
                     [_vm._v(" "), _c("v-icon", [_vm._v("mdi-cash-multiple")])],
@@ -64800,7 +64800,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! exports provided: default */
+/*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64808,11 +64808,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _router_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router.js */ "./resources/js/router.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _plugins_vuetify_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./plugins/vuetify.js */ "./resources/js/plugins/vuetify.js");
-/* harmony import */ var _bootstrap_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
-/* harmony import */ var _bootstrap_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_bootstrap_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _vuex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vuex.js */ "./resources/js/vuex.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _plugins_vuetify_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./plugins/vuetify.js */ "./resources/js/plugins/vuetify.js");
+/* harmony import */ var _bootstrap_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
+/* harmony import */ var _bootstrap_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_bootstrap_js__WEBPACK_IMPORTED_MODULE_5__);
 // /**
 //  * First we will load all of this project's JavaScript dependencies which
 //  * includes Vue and other libraries. It is a great starting point when
@@ -64839,37 +64839,22 @@ __webpack_require__.r(__webpack_exports__);
 //     el: '#app',
 // });
 
- // import vuex from './vuex.js'
 
 
 
- // import Vue from 'vue'
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_5__["default"]);
-var vuex = new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment: function increment(state) {
-      state.count++;
-    }
-  },
-  actions: {}
-});
-/* harmony default export */ __webpack_exports__["default"] = (vuex);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router_js__WEBPACK_IMPORTED_MODULE_1__["default"],
-  vuetify: _plugins_vuetify_js__WEBPACK_IMPORTED_MODULE_3__["default"],
-  vuex: vuex,
+  vuetify: _plugins_vuetify_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+  store: _vuex_js__WEBPACK_IMPORTED_MODULE_2__["default"],
   components: {
-    App: _App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    App: _App_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   methods: {
     handleClick: function handleClick() {
-      this.$vuex.commit('increment'); // console.log(this.$store.commit('increment'))
+      this.$store.commit('increment'); // console.log(this.$store.commit('increment'))
     }
   }
 });
@@ -65011,6 +64996,36 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
+
+/***/ }),
+
+/***/ "./resources/js/vuex.js":
+/*!******************************!*\
+  !*** ./resources/js/vuex.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment: function increment(state) {
+      state.count++;
+    }
+  },
+  actions: {}
+});
+/* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
 

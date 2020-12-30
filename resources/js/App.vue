@@ -57,10 +57,10 @@
             <!-- pemisah konten -->
             <v-spacer></v-spacer>
 
-            <v-btn icon @click="$vuex.handleClick">
+            <v-btn icon>
                 <v-badge color="orange" overlap>
                     <template v-slot:badge>
-                        <span> {{ this.$vuex.state.count }} </span>
+                        <span> {{ $store.state.count }} </span>
                     </template>
                     <v-icon>mdi-cash-multiple</v-icon>
                 </v-badge>

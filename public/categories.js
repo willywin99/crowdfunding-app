@@ -157,7 +157,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     donate: function donate() {
-      alert('donate');
+      // alert('donate')
+      var store = new Vuex.Store({
+        state: {
+          count: 0
+        },
+        mutations: {
+          increment: function increment(state) {
+            state.count++;
+          }
+        },
+        actions: {}
+      });
     }
   }
 });

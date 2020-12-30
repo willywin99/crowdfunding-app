@@ -65,7 +65,20 @@
                 })
             },
             donate() {
-                alert('donate')
+                // alert('donate')
+                const store = new Vuex.Store({
+                    state: {
+                      count: 0
+                    },
+                    mutations: {
+                      increment (state) {
+                        state.count++
+                      }
+                    },
+                    actions: {
+
+                    },
+                  })
             }
         }
     }
