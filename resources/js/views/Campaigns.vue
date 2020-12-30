@@ -54,6 +54,9 @@ export default {
                 let { response } = error
                 console.log(response)
             })
+        },
+        handleClick() {
+            this.$vuex.commit("increment")
         }
     }
 }

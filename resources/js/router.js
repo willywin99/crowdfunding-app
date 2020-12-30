@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+
 Vue.use(Router)
+
+
 
 // DEFINE ROUTE
 const router = new Router({
@@ -37,7 +40,11 @@ const router = new Router({
             path: '*',
             redirect: '/'
         },
-    ]
+    ],
+
 });
 
+
+
 export default router
+

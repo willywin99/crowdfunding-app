@@ -230,6 +230,9 @@ __webpack_require__.r(__webpack_exports__);
         var response = error.response;
         console.log(response);
       });
+    },
+    handleClick: function handleClick() {
+      this.$vuex.commit("increment");
     }
   }
 });

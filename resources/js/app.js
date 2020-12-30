@@ -34,15 +34,44 @@
 
 import Vue from 'vue'
 import router from './router.js'
+// import vuex from './vuex.js'
 import App from './App.vue'
 import vuetify from './plugins/vuetify.js'
 import './bootstrap.js';
+
+// import Vue from 'vue'
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
+const vuex = new Vuex.Store({
+    state: {
+      count: 0
+    },
+    mutations: {
+      increment (state) {
+        state.count++
+      }
+    },
+    actions: {
+
+    },
+  })
+
+export default vuex
 
 const app = new Vue({
     el: '#app',
     router,
     vuetify,
+    vuex,
     components: {
         App
     },
+    methods: {
+        handleClick() {
+            this.$vuex.commit('increment')
+            // console.log(this.$store.commit('increment'))
+        }
+    }
 });
