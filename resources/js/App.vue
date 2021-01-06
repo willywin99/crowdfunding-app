@@ -4,6 +4,10 @@
     <v-app>
         <alert></alert>
 
+        <v-dialog v-model="dialog" fullscreen hide-overlay transition="scale-transition">
+            <search @closed="closeDialog" />
+        </v-dialog>
+
         <!-- <v-snackbar
           v-model="snackbarStatus"
           color="success"
@@ -100,6 +104,7 @@
                 label="Search"
                 prepend-inner-icon="mdi-magnify"
                 solo-inverted
+                @click.stop="dialog = true"
             >
             </v-text-field>
         </v-app-bar>
@@ -148,11 +153,14 @@
 
 <script>
     import { mapGetters } from 'vuex'
+    import Alert from './components/Alert.vue'
+    import Search from './components/Search.vue'
 
     export default {
         name: 'App',
         components: {
-           Alert: () => import('./components/Alert')
+           Alert: () => import('./components/Alert'),
+           Search: () => import('./components/Search')
         },
         data: () => ({
             drawer: false,
@@ -163,6 +171,7 @@
             guest: false,
             // snackbarStatus: false,
             // snackbarText: `Transaksi Berhasil Ditambahkan`,
+            dialog: false,
         }),
         computed: {
             isHome() {
@@ -178,6 +187,11 @@
         // mounted() {
         //     this.snackbarStatus = true
         // }
+        methods: {
+            closeDialog(value) {
+                this.dialog = value
+            }
+        }
     }
 </script>
 
