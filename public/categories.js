@@ -165,7 +165,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])({
-    'donate': 'insert'
+    donate: 'transaction/insert'
   }))
 });
 

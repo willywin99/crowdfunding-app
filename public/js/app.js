@@ -2176,7 +2176,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.$route.path === '/' || this.$route.path === '/home';
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
-    'transaction': 'transaction'
+    'transactions': 'transaction/transactions'
   }))
 });
 
@@ -3451,7 +3451,7 @@ var render = function() {
                 "v-btn",
                 { attrs: { icon: "" } },
                 [
-                  _vm.transaction > 0
+                  _vm.transactions > 0
                     ? _c(
                         "v-badge",
                         {
@@ -3464,7 +3464,7 @@ var render = function() {
                                   return [
                                     _c("span", [
                                       _vm._v(
-                                        " " + _vm._s(_vm.transaction) + " "
+                                        " " + _vm._s(_vm.transactions) + " "
                                       )
                                     ])
                                   ]
@@ -3474,7 +3474,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            739790762
+                            676419481
                           )
                         },
                         [
@@ -3528,7 +3528,7 @@ var render = function() {
                 "v-btn",
                 { attrs: { icon: "" } },
                 [
-                  _vm.transaction > 0
+                  _vm.transactions > 0
                     ? _c(
                         "v-badge",
                         {
@@ -3541,7 +3541,7 @@ var render = function() {
                                   return [
                                     _c("span", [
                                       _vm._v(
-                                        " " + _vm._s(_vm.transaction) + " "
+                                        " " + _vm._s(_vm.transactions) + " "
                                       )
                                     ])
                                   ]
@@ -3551,7 +3551,7 @@ var render = function() {
                             ],
                             null,
                             false,
-                            739790762
+                            676419481
                           )
                         },
                         [
@@ -65044,26 +65044,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/transaction.js */ "./resources/js/stores/transaction.js");
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+/* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+  modules: {
+    transaction: _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }
+}));
+
+/***/ }),
+
+/***/ "./resources/js/stores/transaction.js":
+/*!********************************************!*\
+  !*** ./resources/js/stores/transaction.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
   state: {
-    transaction: 0
+    transactions: 0
   },
   mutations: {
     insert: function insert(state, payload) {
-      state.transaction++;
+      state.transactions++;
     }
   },
   actions: {},
   getters: {
-    transaction: function transaction(state) {
-      return state.transaction;
+    transactions: function transactions(state) {
+      return state.transactions;
     }
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
 

@@ -1,24 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import transaction from './stores/transaction.js'
+
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-    state: {
-      transaction: 0,
-    },
-    mutations: {
-      insert : (state, payload) => {
-        state.transaction++
-      }
-    },
-    actions: {
-
-    },
-    getters: {
-        transaction: state => state.transaction
+export default new Vuex.Store({
+    modules: {
+        transaction
     }
-  })
-
-export default store
+})
 

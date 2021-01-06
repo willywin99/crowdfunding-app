@@ -85,7 +85,7 @@
             //     this.$store.commit('insert')
             // },
             ...mapMutations({
-                'donate' : 'insert'
+                donate : 'transaction/insert'
             }),
         }
     }
