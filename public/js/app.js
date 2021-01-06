@@ -2210,7 +2210,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         icon: 'mdi-hand-heart',
         route: '/campaigns'
       }],
-      guest: false,
+      // guest: false,
       // snackbarStatus: false,
       // snackbarText: `Transaksi Berhasil Ditambahkan`,
       dialog: false
@@ -2221,7 +2221,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.$route.path === '/' || this.$route.path === '/home';
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
-    'transactions': 'transaction/transactions'
+    'transactions': 'transaction/transactions',
+    'guest': 'auth/guest',
+    'user': 'auth/user'
   })),
   // mounted() {
   //     this.snackbarStatus = true

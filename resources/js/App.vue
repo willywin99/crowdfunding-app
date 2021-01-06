@@ -168,7 +168,7 @@
                 { title: 'Home',         icon: 'mdi-home',         route: '/' },
                 { title: 'Campaigns',    icon: 'mdi-hand-heart',   route: '/campaigns' },
             ],
-            guest: false,
+            // guest: false,
             // snackbarStatus: false,
             // snackbarText: `Transaksi Berhasil Ditambahkan`,
             dialog: false,
@@ -181,7 +181,9 @@
             //     return this.$store.getters.transaction
             // },
             ...mapGetters({
-                'transactions' : 'transaction/transactions'
+                'transactions'  : 'transaction/transactions',
+                'guest'         : 'auth/guest',
+                'user'         : 'auth/user',
             }),
         },
         // mounted() {
