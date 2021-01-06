@@ -88,6 +88,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -132,6 +139,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -142,7 +150,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     this.go();
   },
-  methods: {
+  methods: _objectSpread({
     go: function go() {
       var _this = this;
 
@@ -155,24 +163,10 @@ __webpack_require__.r(__webpack_exports__);
         var responses = error.responses;
         console.log(responses);
       });
-    },
-    donate: function donate() {
-      // alert('donate')
-      // const store = new Vuex.Store({
-      //     state: {
-      //       count: 0
-      //     },
-      //     mutations: {
-      //       increment (state) {
-      //         state.count++
-      //       }
-      //     },
-      //     actions: {
-      //     },
-      // })
-      this.$store.commit('insert');
     }
-  }
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])({
+    'donate': 'insert'
+  }))
 });
 
 /***/ }),

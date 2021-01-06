@@ -122,25 +122,30 @@
 </template>
 
 <script>
-export default {
-    name: 'App',
-    data: () => ({
-        drawer: false,
-        menus: [
-            { title: 'Home',         icon: 'mdi-home',         route: '/' },
-            { title: 'Campaigns',    icon: 'mdi-hand-heart',   route: '/campaigns' },
-        ],
-        guest: false,
-    }),
-    computed: {
-        isHome() {
-            return (this.$route.path==='/' || this.$route.path==='/home')
-        },
-        transaction() {
-            return this.$store.getters.transaction
+    import { mapGetters } from 'vuex'
+
+    export default {
+        name: 'App',
+        data: () => ({
+            drawer: false,
+            menus: [
+                { title: 'Home',         icon: 'mdi-home',         route: '/' },
+                { title: 'Campaigns',    icon: 'mdi-hand-heart',   route: '/campaigns' },
+            ],
+            guest: false,
+        }),
+        computed: {
+            isHome() {
+                return (this.$route.path==='/' || this.$route.path==='/home')
+            },
+            // transaction() {
+            //     return this.$store.getters.transaction
+            // },
+            ...mapGetters({
+                'transaction' : 'transaction'
+            }),
         }
     }
-}
 </script>
 
 <style>

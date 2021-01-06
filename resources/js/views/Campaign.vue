@@ -43,6 +43,8 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex'
+
     export default {
         data: () => ({
             campaign: {},   // objek campaign
@@ -64,24 +66,27 @@
                     console.log(responses)
                 })
             },
-            donate() {
-                // alert('donate')
-                // const store = new Vuex.Store({
-                //     state: {
-                //       count: 0
-                //     },
-                //     mutations: {
-                //       increment (state) {
-                //         state.count++
-                //       }
-                //     },
-                //     actions: {
+            // donate() {
+            //     // alert('donate')
+            //     // const store = new Vuex.Store({
+            //     //     state: {
+            //     //       count: 0
+            //     //     },
+            //     //     mutations: {
+            //     //       increment (state) {
+            //     //         state.count++
+            //     //       }
+            //     //     },
+            //     //     actions: {
 
-                //     },
-                // })
+            //     //     },
+            //     // })
 
-                this.$store.commit('insert')
-            }
+            //     this.$store.commit('insert')
+            // },
+            ...mapMutations({
+                'donate' : 'insert'
+            }),
         }
     }
 </script>
