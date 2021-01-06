@@ -65962,6 +65962,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/transaction.js */ "./resources/js/stores/transaction.js");
 /* harmony import */ var _stores_alert_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/alert.js */ "./resources/js/stores/alert.js");
+/* harmony import */ var _stores_auth_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stores/auth.js */ "./resources/js/stores/auth.js");
+
 
 
 
@@ -65970,7 +65972,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     transaction: _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__["default"],
-    alert: _stores_alert_js__WEBPACK_IMPORTED_MODULE_3__["default"]
+    alert: _stores_alert_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+    auth: _stores_auth_js__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
 
@@ -66017,6 +66020,43 @@ __webpack_require__.r(__webpack_exports__);
     },
     text: function text(state) {
       return state.text;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/stores/auth.js":
+/*!*************************************!*\
+  !*** ./resources/js/stores/auth.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: {
+    user: {}
+  },
+  mutations: {
+    set: function set(state, payload) {
+      state.user = payload;
+    }
+  },
+  actions: {
+    set: function set(_ref, payload) {
+      var commit = _ref.commit;
+      commit('set', payload);
+    }
+  },
+  getters: {
+    user: function user(state) {
+      return state.user;
+    },
+    guest: function guest(state) {
+      return Object.keys(state.guest).length === 0;
     }
   }
 });
