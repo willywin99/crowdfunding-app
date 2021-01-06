@@ -5,16 +5,19 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-      count: 0
+      transaction: 0,
     },
     mutations: {
-      increment (state) {
-        state.count++
+      insert : (state, payload) => {
+        state.transaction++
       }
     },
     actions: {
 
     },
+    getters: {
+        transaction: state => state.transaction
+    }
   })
 
 export default store
