@@ -4,9 +4,15 @@
     <v-app>
         <alert></alert>
 
-        <v-dialog v-model="dialog" fullscreen hide-overlay transition="scale-transition">
+        <!-- <v-dialog v-model="dialog" fullscreen hide-overlay transition="scale-transition">
             <search @closed="closeDialog" />
-        </v-dialog>
+        </v-dialog> -->
+
+        <keep-alive>
+            <v-dialog v-model="dialog" fullscreen hide-overlay persistent transition="dialog-bottom-transition">
+                <component :is"currentComponent" @closed="setDialogStatus" ></component>
+            </v-dialog>
+        </keep-alive>
 
         <!-- <v-snackbar
           v-model="snackbarStatus"
@@ -104,7 +110,7 @@
                 label="Search"
                 prepend-inner-icon="mdi-magnify"
                 solo-inverted
-                @click.stop="dialog = true"
+                @click.stop="setDialogComponent('search')"
             >
             </v-text-field>
         </v-app-bar>
@@ -152,7 +158,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
     import Alert from './components/Alert.vue'
     import Search from './components/Search.vue'
 
@@ -171,7 +177,7 @@
             // guest: false,
             // snackbarStatus: false,
             // snackbarText: `Transaksi Berhasil Ditambahkan`,
-            dialog: false,
+            // dialog: false,
         }),
         computed: {
             isHome() {
@@ -181,19 +187,33 @@
             //     return this.$store.getters.transaction
             // },
             ...mapGetters({
-                'transactions'  : 'transaction/transactions',
-                'guest'         : 'auth/guest',
-                'user'         : 'auth/user',
+                'transactions'      : 'transaction/transactions',
+                'guest'             : 'auth/guest',
+                'user'              : 'auth/user',
+                'dialogStatus'      : 'dialog/status',
+                'currentComponent'  : 'dialog/component',
             }),
+            dialog: {
+                get() {
+                    return this.dialogStatus
+                },
+                set(value) {
+                    this.setDialogStatus(value)
+                }
+            }
         },
         // mounted() {
         //     this.snackbarStatus = true
         // }
         methods: {
-            closeDialog(value) {
-                this.dialog = value
-            }
-        }
+            // closeDialog(value) {
+            //     this.dialog = value
+            // }
+            ...mapActions({
+                setDialogStatus     : 'dialog/setStatus',
+                setDialogComponent     : 'dialog/setComponent',
+            }),
+        },
     }
 </script>
 

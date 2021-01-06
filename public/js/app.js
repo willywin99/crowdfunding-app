@@ -2185,6 +2185,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2209,30 +2215,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: 'Campaigns',
         icon: 'mdi-hand-heart',
         route: '/campaigns'
-      }],
-      // guest: false,
+      }] // guest: false,
       // snackbarStatus: false,
       // snackbarText: `Transaksi Berhasil Ditambahkan`,
-      dialog: false
+      // dialog: false,
+
     };
   },
-  computed: _objectSpread({
+  computed: _objectSpread(_objectSpread({
     isHome: function isHome() {
       return this.$route.path === '/' || this.$route.path === '/home';
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
     'transactions': 'transaction/transactions',
     'guest': 'auth/guest',
-    'user': 'auth/user'
-  })),
+    'user': 'auth/user',
+    'dialogStatus': 'dialog/status',
+    'currentComponent': 'dialog/component'
+  })), {}, {
+    dialog: {
+      get: function get() {
+        return this.dialogStatus;
+      },
+      set: function set(value) {
+        this.setDialogStatus(value);
+      }
+    }
+  }),
   // mounted() {
   //     this.snackbarStatus = true
   // }
-  methods: {
-    closeDialog: function closeDialog(value) {
-      this.dialog = value;
-    }
-  }
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+    setDialogStatus: 'dialog/setStatus',
+    setDialogComponent: 'dialog/setComponent'
+  }))
 });
 
 /***/ }),
@@ -2370,7 +2386,7 @@ __webpack_require__.r(__webpack_exports__);
   name: 'search',
   components: {
     CampaignItem: function CampaignItem() {
-      return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./CampaignItem */ "./resources/js/components/CampaignItem.vue"));
+      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./CampaignItem */ "./resources/js/components/CampaignItem.vue"));
     }
   },
   data: function data() {
@@ -3510,22 +3526,28 @@ var render = function() {
       _c("alert"),
       _vm._v(" "),
       _c(
-        "v-dialog",
-        {
-          attrs: {
-            fullscreen: "",
-            "hide-overlay": "",
-            transition: "scale-transition"
-          },
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
+        "keep-alive",
+        [
+          _c(
+            "v-dialog",
+            {
+              attrs: {
+                fullscreen: "",
+                "hide-overlay": "",
+                persistent: "",
+                transition: "dialog-bottom-transition"
+              },
+              model: {
+                value: _vm.dialog,
+                callback: function($$v) {
+                  _vm.dialog = $$v
+                },
+                expression: "dialog"
+              }
             },
-            expression: "dialog"
-          }
-        },
-        [_c("search", { on: { closed: _vm.closeDialog } })],
+            [_vm._v('"currentComponent" @closed="setDialogStatus" >')]
+          )
+        ],
         1
       ),
       _vm._v(" "),
@@ -3747,7 +3769,7 @@ var render = function() {
                 on: {
                   click: function($event) {
                     $event.stopPropagation()
-                    _vm.dialog = true
+                    return _vm.setDialogComponent("search")
                   }
                 },
                 slot: "extension"
@@ -65965,6 +65987,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stores/transaction.js */ "./resources/js/stores/transaction.js");
 /* harmony import */ var _stores_alert_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stores/alert.js */ "./resources/js/stores/alert.js");
 /* harmony import */ var _stores_auth_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stores/auth.js */ "./resources/js/stores/auth.js");
+/* harmony import */ var _stores_dialog_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stores/dialog.js */ "./resources/js/stores/dialog.js");
+
 
 
 
@@ -65975,7 +65999,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   modules: {
     transaction: _stores_transaction_js__WEBPACK_IMPORTED_MODULE_2__["default"],
     alert: _stores_alert_js__WEBPACK_IMPORTED_MODULE_3__["default"],
-    auth: _stores_auth_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+    auth: _stores_auth_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+    dialog: _stores_dialog_js__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }));
 
@@ -66059,6 +66084,53 @@ __webpack_require__.r(__webpack_exports__);
     },
     guest: function guest(state) {
       return Object.keys(state.guest).length === 0;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/stores/dialog.js":
+/*!***************************************!*\
+  !*** ./resources/js/stores/dialog.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: {
+    status: false,
+    commponent: 'search' // search, login, atau yang lainnya
+
+  },
+  mutations: {
+    setStatus: function setStatus(state, status) {
+      state.status = status;
+    },
+    setComponent: function setComponent(state, component) {
+      state.commponent = component;
+    }
+  },
+  actions: {
+    setStatus: function setStatus(_ref, status) {
+      var commit = _ref.commit;
+      commit('setStatus', status);
+    },
+    setComponent: function setComponent(_ref2, component) {
+      var commit = _ref2.commit;
+      commit('setComponent', component);
+      commit('setStatus', true);
+    }
+  },
+  getters: {
+    status: function status(state) {
+      return state.status;
+    },
+    component: function component(state) {
+      return state.component;
     }
   }
 });
