@@ -3455,10 +3455,7 @@ var render = function() {
                         "v-list-item-avatar",
                         [
                           _c("v-img", {
-                            attrs: {
-                              src:
-                                "https://randomuser.me/api/portraits/men/77.jpg"
-                            }
+                            attrs: { src: _vm.user.user.photo_profile }
                           })
                         ],
                         1
@@ -3466,7 +3463,11 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-list-item-content",
-                        [_c("v-list-item-title", [_vm._v("Willy Sianturi")])],
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(_vm.user.user.name))
+                          ])
+                        ],
                         1
                       )
                     ],
