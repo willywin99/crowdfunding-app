@@ -10,7 +10,7 @@
 
         <keep-alive>
             <v-dialog v-model="dialog" fullscreen hide-overlay persistent transition="dialog-bottom-transition">
-                <component :is"currentComponent" @closed="setDialogStatus" ></component>
+                <component :is="currentComponent" @closed="setDialogStatus" ></component>
             </v-dialog>
         </keep-alive>
 
@@ -41,15 +41,15 @@
             <v-list>
                 <v-list-item v-if="!guest">
                     <v-list-item-avatar>
-                        <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
+                        <v-img src="https://randomuser.me/api/portraits/men/77.jpg"></v-img>
                     </v-list-item-avatar>
                     <v-list-item-content>
-                        <v-list-item-title>John Leider</v-list-item-title>
+                        <v-list-item-title>Willy Sianturi</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
                 <div class="pa-2" v-if="guest">
-                    <v-btn block color="primary" class="mb-1">
+                    <v-btn block color="primary" class="mb-1" @click="setDialogComponent('login')">
                         <v-icon left>mdi-lock</v-icon>
                         Login
                     </v-btn>
@@ -110,7 +110,7 @@
                 label="Search"
                 prepend-inner-icon="mdi-magnify"
                 solo-inverted
-                @click.stop="setDialogComponent('search')"
+                @click="setDialogComponent('search')"
             >
             </v-text-field>
         </v-app-bar>
@@ -159,14 +159,15 @@
 
 <script>
     import { mapActions, mapGetters } from 'vuex'
-    import Alert from './components/Alert.vue'
-    import Search from './components/Search.vue'
+    // import Alert from './components/Alert.vue'
+    // import Search from './components/Search.vue'
 
     export default {
         name: 'App',
         components: {
            Alert: () => import('./components/Alert'),
-           Search: () => import('./components/Search')
+           Search: () => import('./components/Search'),
+           Login: () => import('./components/Login'),
         },
         data: () => ({
             drawer: false,
@@ -211,7 +212,7 @@
             // }
             ...mapActions({
                 setDialogStatus     : 'dialog/setStatus',
-                setDialogComponent     : 'dialog/setComponent',
+                setDialogComponent  : 'dialog/setComponent',
             }),
         },
     }

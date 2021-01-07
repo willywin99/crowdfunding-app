@@ -22,7 +22,7 @@ export default {
         },
     },
     getters: {
-        status      : state => state.status,
-        component   : state => state.component
+        status: state => state.status,
+        component: state => state.component,
     }
 }

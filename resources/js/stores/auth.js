@@ -15,6 +15,6 @@ export default {
     },
     getters: {
         user    : state => state.user,
-        guest    : state => Object.keys(state.guest).length === 0,
+        guest   : state => Object.keys(state.user).length === 0,
     }
 }
