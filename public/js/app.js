@@ -2252,10 +2252,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   // mounted() {
   //     this.snackbarStatus = true
   // }
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])({
     setDialogStatus: 'dialog/setStatus',
-    setDialogComponent: 'dialog/setComponent'
-  }))
+    setDialogComponent: 'dialog/setComponent',
+    setAuth: 'auth/set',
+    setAlert: 'alert/set'
+  })), {}, {
+    logout: function logout() {
+      var _this = this;
+
+      var config = {
+        headers: {
+          'Authorization': 'Bearer ' + this.user.token
+        }
+      };
+      axios.post('/api/auth/logout', {}, config).then(function (response) {
+        _this.setAuth({}); // kosongkan auth ketika logout
+
+
+        _this.setAlert({
+          status: true,
+          color: 'success',
+          text: 'Logout successfully'
+        });
+      })["catch"](function (error) {
+        var data = error.response.data;
+
+        _this.setAlert({
+          status: true,
+          color: 'error',
+          text: data.message
+        });
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -3412,7 +3442,10 @@ var render = function() {
                           [
                             _c(
                               "v-btn",
-                              { attrs: { block: "", color: "red", dark: "" } },
+                              {
+                                attrs: { block: "", color: "red", dark: "" },
+                                on: { click: _vm.logout }
+                              },
                               [
                                 _c("v-icon", { attrs: { left: "" } }, [
                                   _vm._v("mdi-lock")
