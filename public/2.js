@@ -61,6 +61,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'login',
@@ -132,6 +140,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     close: function close() {
       this.$emit('closed', false);
+    },
+    authProvider: function authProvider(provider) {
+      var _this2 = this;
+
+      var url = '/api/auth/social/' + provider;
+      axios.get(url).then(function (response) {
+        var data = response.data; // console.log(data)
+
+        window.location.href = data.url;
+      })["catch"](function (error) {
+        _this2.setAlert({
+          status: true,
+          text: 'Login Failed',
+          color: 'error'
+        });
+      });
     }
   })
 });
@@ -255,6 +279,27 @@ var render = function() {
                       _vm._v("\n                  Login\n                  "),
                       _c("v-icon", { attrs: { right: "", dark: "" } }, [
                         _vm._v("mdi-lock-open")
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "primary lighten-1" },
+                      on: {
+                        click: function($event) {
+                          return _vm.authProvider("google")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                  Login with Google\n                  "
+                      ),
+                      _c("v-icon", { attrs: { right: "", dark: "" } }, [
+                        _vm._v("mdi-google")
                       ])
                     ],
                     1
