@@ -1,28 +1,28 @@
-export default {
-    namespaced: true,
-    state: {
-        status      : false,
-        commponent  : 'search',     // search, login, atau yang lainnya
+export default  {
+    namespaced:true,
+    state:{
+        status:false,
+        component:'search',//search, login,atau yang lain
     },
-    mutations: {
-        setStatus: (state, status) => {
-            state.status = status
+    mutations:{
+        setStatus:(state,status)=>{
+            state.status=status
         },
-        setComponent: (state, component) => {
-            state.commponent = component
-        },
+        setComponent:(state,component)=>{
+            state.component=component
+        }
     },
-    actions: {
-        setStatus: ({commit}, status) => {
-            commit('setStatus', status)
+    actions:{
+        setStatus:({commit},status)=>{
+            commit('setStatus',status)
         },
-        setComponent: ({commit}, component) => {
-            commit('setComponent', component)
-            commit('setStatus', true)
-        },
+        setComponent:({commit},component)=>{
+            commit('setComponent',component)
+            commit('setStatus',true)
+        }
     },
-    getters: {
-        status: state => state.status,
-        component: state => state.component,
+    getters:{
+        status: state=>state.status,
+        component:state=>state.component
     }
 }

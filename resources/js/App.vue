@@ -1,8 +1,10 @@
-<!-- App.vue -->
 <template>
+<!-- App.vue -->
 
     <v-app>
-        <alert></alert>
+        <alert>
+
+        </alert>
 
         <!-- <v-dialog v-model="dialog" fullscreen hide-overlay transition="scale-transition">
             <search @closed="closeDialog" />
@@ -69,6 +71,10 @@
                     <v-list-item-icon>
                         <v-icon left>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
+
+                    <v-list-item-content>
+                        <v-list-item-title>{{ item.title }}</v-list-item-title>
+                    </v-list-item-content>
 
                 </v-list-item>
             </v-list>

@@ -77,7 +77,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       showPassword: false,
       password: '',
       passwordRules: [function (v) {
-        return !!v || 'Password Required.';
+        return !!v || 'Password required.';
       }, function (v) {
         return v && v.length >= 6 || 'Min 6 characters';
       }]

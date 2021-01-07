@@ -59,7 +59,7 @@ export default {
             showPassword: false,
             password: '',
             passwordRules: [
-                v => !!v || 'Password Required.',
+                v => !!v || 'Password required.',
                 v => (v && v.length >= 6) || 'Min 6 characters',
             ],
         }
@@ -99,7 +99,8 @@ export default {
                             text    : 'Login failed',
                         })
                     }
-                }).catch((error) => {
+                })
+                .catch((error) => {
                     let responses = error.response
 
                     this.setAlert({

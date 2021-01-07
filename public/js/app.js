@@ -2189,6 +2189,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
  // import Alert from './components/Alert.vue'
 // import Search from './components/Search.vue'
 
@@ -3412,7 +3418,7 @@ var render = function() {
                                   _vm._v("mdi-lock")
                                 ]),
                                 _vm._v(
-                                  "\n                    Logout\n                "
+                                  "\n                        Logout\n                    "
                                 )
                               ],
                               1
@@ -3489,7 +3495,7 @@ var render = function() {
                             _vm._v("mdi-lock")
                           ]),
                           _vm._v(
-                            "\n                    Login\n                "
+                            "\n                        Login\n                    "
                           )
                         ],
                         1
@@ -3503,7 +3509,7 @@ var render = function() {
                             _vm._v("mdi-account")
                           ]),
                           _vm._v(
-                            "\n                    Register\n                "
+                            "\n                        Register\n                    "
                           )
                         ],
                         1
@@ -3527,6 +3533,12 @@ var render = function() {
                           _vm._v(_vm._s(item.icon))
                         ])
                       ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-list-item-content",
+                      [_c("v-list-item-title", [_vm._v(_vm._s(item.title))])],
                       1
                     )
                   ],
@@ -3706,7 +3718,7 @@ var render = function() {
             [
               _c("v-card-text", { staticClass: "text-center" }, [
                 _vm._v(
-                  "\n                © " +
+                  "\n                    © " +
                     _vm._s(new Date().getFullYear()) +
                     " - "
                 ),
@@ -65611,7 +65623,7 @@ __webpack_require__.r(__webpack_exports__);
   namespaced: true,
   state: {
     status: false,
-    commponent: 'search' // search, login, atau yang lainnya
+    component: 'search' //search, login,atau yang lain
 
   },
   mutations: {
@@ -65619,7 +65631,7 @@ __webpack_require__.r(__webpack_exports__);
       state.status = status;
     },
     setComponent: function setComponent(state, component) {
-      state.commponent = component;
+      state.component = component;
     }
   },
   actions: {
