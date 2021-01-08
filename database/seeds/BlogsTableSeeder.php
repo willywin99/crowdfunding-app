@@ -18,11 +18,12 @@ class BlogsTableSeeder extends Seeder
         //
         $faker = Faker::create('en_US');
 
-        for($i=1; $i<=50; $i++) {
+        for($i=0; $i<5; $i++) {
             Blog::insert([
                 'id' => Str::uuid(),
                 'title' => $faker->jobTitle,
-                'description' => $faker->text($maxNbChars = 191)
+                'description' => $faker->paragraph,
+                // 'image' => $faker->image('public/storage/photos/blogs',640,480, null, false)
             ]);
         }
     }

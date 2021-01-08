@@ -22,7 +22,8 @@ class UsersTableSeeder extends Seeder
         $faker = Faker\Factory::create('id_ID');
         for($i=0; $i<5; $i++) {
             $avatar_path = 'public/photos/users';
-            $avatar_fullpath = $faker->image( $avatar_path, 200, 250, 'people', true, true, 'pepole');
+            // $avatar_fullpath = $faker->image( $avatar_path, 200, 250, 'people', true, true, 'pepole');
+            $avatar_fullpath = $faker->image($avatar_path, 600, 400, 'people', true, 'Faker', true);
             $avatar_image = explode("\\", $avatar_fullpath);
             $users[$i] = [
                 'id'            => Str::uuid(),
