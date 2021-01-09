@@ -3709,7 +3709,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("v-toolbar-title", [_vm._v("SanbercodeApp")]),
+              _c("v-toolbar-title", [_vm._v("SanberCode App")]),
               _vm._v(" "),
               _c("v-spacer"),
               _vm._v(" "),

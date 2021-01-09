@@ -18,7 +18,7 @@ class BlogsTableSeeder extends Seeder
         //
         $faker = Faker::create('en_US');
 
-        for($i=0; $i<5; $i++) {
+        for($i=0; $i<3; $i++) {
             Blog::insert([
                 'id' => Str::uuid(),
                 'title' => $faker->jobTitle,

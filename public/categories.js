@@ -71,10 +71,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
+  data: function data() {
+    return {
+      blogs: [],
+      page: 0,
+      lengthPage: 0
+    };
+  },
+  created: function created() {
+    this.go();
+  },
+  methods: {
+    go: function go() {
+      var _this = this;
+
+      var url = 'api/blog?page=' + this.page;
+      axios.get(url).then(function (response) {
+        var data = response.data.data;
+        console.log(data);
+        _this.blogs = data.blogs.data;
+        _this.page = data.blogs.current_page;
+        _this.lengthPage = data.blogs.last_page;
+      })["catch"](function (error) {
+        var responses = error.responses;
+        console.log(responses);
+      });
+    }
+  } // mounted() {
+  //     console.log('Component mounted.')
+  // }
+
 });
 
 /***/ }),
@@ -580,30 +617,71 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [_vm._v("Blogs")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    Ini adalah daftar blogs\n                "
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c(
+        "v-container",
+        { staticClass: "ma-0 pa-0", attrs: { "grid-list-sm": "" } },
+        [
+          _c("v-subheader", [_vm._v("\n            All Blogs\n        ")]),
+          _vm._v(" "),
+          _c(
+            "v-layout",
+            { attrs: { wrap: "" } },
+            _vm._l(_vm.blogs, function(blog) {
+              return _c(
+                "v-flex",
+                { key: "blog-" + blog.id, attrs: { xs6: "" } },
+                [
+                  _c(
+                    "v-card",
+                    { attrs: { to: "/blog/" + blog.id } },
+                    [
+                      _c(
+                        "v-img",
+                        {
+                          staticClass: "white--text",
+                          attrs: { src: blog.image }
+                        },
+                        [
+                          _c("v-card-title", {
+                            staticClass: "fill-height align-end",
+                            domProps: { textContent: _vm._s(blog.title) }
+                          })
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
               )
-            ])
-          ])
-        ])
-      ])
-    ])
-  }
-]
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c("v-pagination", {
+            attrs: { length: _vm.lengthPage, "total-visible": 6 },
+            on: { input: _vm.go },
+            model: {
+              value: _vm.page,
+              callback: function($$v) {
+                _vm.page = $$v
+              },
+              expression: "page"
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

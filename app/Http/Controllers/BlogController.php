@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     //
+    public function index()
+    {
+        $blogs = Blog::paginate(6);
+
+        $data['blogs'] = $blogs;
+
+        return response([
+            'response_code' => '00',
+            'response_message' => 'data blogs berhasil ditampilkan',
+            'data' => $data
+        ], 200);
+    }
+
     public function random($count)
     {
         $blogs = Blog::select('*')
