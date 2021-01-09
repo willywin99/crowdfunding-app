@@ -1,6 +1,6 @@
 <template>
   <v-card>
-      <v-toolbar dark color="success">
+      <v-toolbar dark color="grey darken-3">
           <v-btn icon dark @click.native="close">
               <v-icon>mdi-close</v-icon>
           </v-btn>

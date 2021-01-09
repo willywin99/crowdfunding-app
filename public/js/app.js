@@ -3512,7 +3512,8 @@ var render = function() {
                 fullscreen: "",
                 "hide-overlay": "",
                 persistent: "",
-                transition: "dialog-bottom-transition"
+                transition: "dialog-bottom-transition",
+                dark: ""
               },
               model: {
                 value: _vm.dialog,
@@ -3537,7 +3538,7 @@ var render = function() {
       _c(
         "v-navigation-drawer",
         {
-          attrs: { app: "" },
+          attrs: { app: "", dark: "" },
           scopedSlots: _vm._u(
             [
               !_vm.guest
@@ -3698,7 +3699,7 @@ var render = function() {
       _vm.isHome
         ? _c(
             "v-app-bar",
-            { attrs: { app: "", color: "success", dark: "" } },
+            { attrs: { app: "", color: "grey darken-3", dark: "" } },
             [
               _c("v-app-bar-nav-icon", {
                 on: {
@@ -3776,7 +3777,7 @@ var render = function() {
           )
         : _c(
             "v-app-bar",
-            { attrs: { app: "", color: "success", dark: "" } },
+            { attrs: { app: "", color: "grey darken-3", dark: "" } },
             [
               _c(
                 "v-btn",
@@ -66042,6 +66043,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: 'blogs',
     component: function component() {
       return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Blogs.vue */ "./resources/js/views/Blogs.vue"));
+    }
+  }, {
+    path: '/blog/:id',
+    name: 'blog',
+    component: function component() {
+      return __webpack_require__.e(/*! import() | categories */ "categories").then(__webpack_require__.bind(null, /*! ./views/Blog.vue */ "./resources/js/views/Blog.vue"));
     }
   }, {
     path: '/campaigns',

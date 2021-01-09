@@ -11,7 +11,7 @@
         </v-dialog> -->
 
         <keep-alive>
-            <v-dialog v-model="dialog" fullscreen hide-overlay persistent transition="dialog-bottom-transition">
+            <v-dialog v-model="dialog" fullscreen hide-overlay persistent transition="dialog-bottom-transition" dark>
                 <component :is="currentComponent" @closed="setDialogStatus" ></component>
             </v-dialog>
         </keep-alive>
@@ -39,7 +39,7 @@
         </v-snackbar> -->
 
         <!-- sidebar -->
-        <v-navigation-drawer app v-model="drawer">
+        <v-navigation-drawer app v-model="drawer" dark>
             <v-list>
                 <v-list-item v-if="!guest">
                     <v-list-item-avatar>
@@ -90,7 +90,7 @@
         </v-navigation-drawer>
 
         <!-- header -->
-        <v-app-bar app color="success" dark v-if="isHome">
+        <v-app-bar app color="grey darken-3" dark v-if="isHome">
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
             <v-toolbar-title>SanberCode App</v-toolbar-title>
@@ -121,7 +121,7 @@
             </v-text-field>
         </v-app-bar>
 
-        <v-app-bar app color="success" dark v-else>
+        <v-app-bar app color="grey darken-3" dark v-else>
             <v-btn icon @click.stop="$router.go(-1)">
                 <v-icon>mdi-arrow-left-circle</v-icon>
             </v-btn>

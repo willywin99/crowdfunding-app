@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div background-color="grey darken-3">
       <v-container class="ma-0 pa-0" grid-list-sm>
           <v-subheader>
               All Campaigns

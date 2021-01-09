@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- template campaigns -->
-      <v-container class="ma-0 pa-0" grid-list-sm>
+      <v-container class="ma-0 pa-0" grid-list-sm background-color="grey darken-3">
           <div class="text-right">
               <v-btn small text to="/campaigns" class="blue--text">
                 All Campaigns <v-icon>mdi-chevron-right</v-icon>
